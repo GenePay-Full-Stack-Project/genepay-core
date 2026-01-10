@@ -1,0 +1,19 @@
+# Ignore cloned repositories
+modules/
+web/
+mobile/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
