@@ -7,6 +7,11 @@ echo GenePay Repository Setup
 echo ========================================
 echo.
 
+REM Navigate to parent directory
+echo Navigating to parent directory...
+cd ..
+echo.
+
 REM Create folder structure
 echo Creating folder structure...
 if not exist "modules" mkdir modules

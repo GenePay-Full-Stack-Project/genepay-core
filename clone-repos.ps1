@@ -10,6 +10,11 @@ Write-Host "GenePay Repository Setup" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
+# Navigate to parent directory
+Write-Host "Navigating to parent directory..." -ForegroundColor Yellow
+Set-Location ..
+Write-Host ""
+
 # Create folder structure
 Write-Host "Creating folder structure..." -ForegroundColor Yellow
 New-Item -ItemType Directory -Force -Path "modules" | Out-Null

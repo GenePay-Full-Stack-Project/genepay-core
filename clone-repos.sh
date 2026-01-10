@@ -9,6 +9,11 @@ echo "GenePay Repository Setup"
 echo "========================================"
 echo ""
 
+# Navigate to parent directory
+echo "Navigating to parent directory..."
+cd ..
+echo ""
+
 # Create folder structure
 echo "Creating folder structure..."
 mkdir -p modules
