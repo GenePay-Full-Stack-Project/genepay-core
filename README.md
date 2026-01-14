@@ -1,10 +1,10 @@
-# 🚀 GenePay Core - Repository Setup Scripts
+# 🚀 GenePay Core - Central Repository Hub
 
-This repository contains automated scripts to clone and set up the complete GenePay microservices ecosystem.
+This is the central repository for the GenePay microservices ecosystem. All GenePay services are organized as **Git submodules** for streamlined development and version control.
 
-## 📁 Folder Structure
+## 📁 Repository Structure
 
-After running the scripts, the following structure will be created:
+The GenePay project is organized with all services as submodules:
 
 ```
 genepay-core/
@@ -22,36 +22,36 @@ genepay-core/
 
 ## 🛠️ Prerequisites
 
-- **Git** must be installed and available in your PATH
+- **Git 2.13+** (for submodule support)
 - Internet connection to clone repositories from GitHub
-- Appropriate permissions to create folders in the current directory
+- Appropriate GitHub access to GenePay-Full-Stack-Project organization
 
-## 📝 Usage Instructions
+## 🚀 Quick Start
 
-Choose the script based on your operating system:
+### Clone with All Submodules (Recommended)
 
-### Windows (Command Prompt)
-```cmd
-clone-repos.bat
-```
-
-### Windows (PowerShell)
-```powershell
-.\clone-repos.ps1
-```
-
-**Note:** You may need to enable script execution in PowerShell:
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-
-### Linux/macOS (Bash)
 ```bash
-chmod +x clone-repos.sh
-./clone-repos.sh
+# Clone the repository with all submodules
+git clone --recursive https://github.com/GenePay-Full-Stack-Project/genepay-core.git
+
+# Navigate to the directory
+cd genepay-core
 ```
 
-## 📦 Repositories Cloned
+### Clone First, Then Initialize Submodules
+
+```bash
+# Clone the main repository
+git clone https://github.com/GenePay-Full-Stack-Project/genepay-core.git
+cd genepay-core
+
+# Initialize and clone all submodules
+git submodule update --init --recursive
+```
+
+## 📦 Submodules Overview
+
+All GenePay services are included as Git submodules:
 
 | Repository | Folder | Technology | Purpose |
 |------------|--------|------------|---------|
@@ -63,61 +63,181 @@ chmod +x clone-repos.sh
 | [genepay-merchant-app](https://github.com/GenePay-Full-Stack-Project/genepay-merchant-app) | `mobile/genepay_merchant_app` | Flutter, Dart | Merchant mobile application |
 | [genepay-user-app](https://github.com/GenePay-Full-Stack-Project/genepay-user-app) | `mobile/genepay_user_app` | Flutter, Dart | User mobile application |
 
-## ✅ What Each Script Does
+## 🔄 Working with Submodules
 
-1. **Creates folder structure**: Automatically creates `modules`, `web`, and `mobile` directories
-2. **Clones repositories**: Downloads all 7 GenePay repositories from GitHub
-3. **Organizes by type**: Places each repository in the appropriate folder based on its function
-4. **Error handling**: Reports success or failure for each cloning operation
-5. **Progress tracking**: Shows which repository is being cloned (e.g., [3/7])
+### Update All Submodules to Latest
+
+```bash
+# Update all submodules to their latest commit on the default branch
+git submodule update --remote --merge
+```
+
+### Update a Specific Submodule
+
+```bash
+# Navigate to the submodule
+cd modules/genepay-payment-service
+
+# Pull latest changes
+git checkout main
+git pull origin main
+
+# Go back to root and commit the submodule reference update
+cd ../..
+git add modules/genepay-payment-service
+git commit -m "Update payment service submodule"
+```
+
+### Check Submodule Status
+
+```bash
+# View status of all submodules
+git submodule status
+
+# View details of each submodule
+git submodule foreach 'git status'
+```
+
+### Pull Latest Changes in All Submodules
+
+```bash
+# Pull latest in all submodules
+git submodule foreach 'git pull origin main'
+```
+
+## 🎯 VS Code Integration
+
+When you open this repository in VS Code:
+
+✅ **Source Control panel automatically detects all submodules**  
+✅ Each submodule appears as a separate Git repository  
+✅ You can commit, push, and pull changes independently for each service  
+✅ All repositories are organized in a single workspace  
+
+### Recommended VS Code Workspace
+
+For better organization, use the included workspace file (if available) or create one:
+
+```json
+{
+  "folders": [
+    { "name": "📦 GenePay Core", "path": "." },
+    { "name": "💳 Payment Service", "path": "modules/genepay-payment-service" },
+    { "name": "🔐 Biometric Service", "path": "modules/genepay-biometric-service" },
+    { "name": "⛓️ Blockchain Service", "path": "modules/genepay-blockchain-service" },
+    { "name": "🎛️ Admin Dashboard", "path": "web/genepay-admin-dashboard" },
+    { "name": "🔗 Blockchain Dashboard", "path": "web/genepay-blockchain-dashboard" },
+    { "name": "📱 Merchant App", "path": "mobile/genepay_merchant_app" },
+    { "name": "📲 User App", "path": "mobile/genepay_user_app" }
+  ],
+  "settings": {
+    "git.autoRepositoryDetection": true
+  }
+}
+```
+
+## 🔧 Development Workflow
+
+### Making Changes to a Submodule
+
+1. **Navigate to the submodule directory**:
+   ```bash
+   cd modules/genepay-payment-service
+   ```
+
+2. **Create a feature branch**:
+   ```bash
+   git checkout -b feature/new-feature
+   ```
+
+3. **Make your changes and commit**:
+   ```bash
+   git add .
+   git commit -m "Add new feature"
+   git push origin feature/new-feature
+   ```
+
+4. **Update the parent repository** (optional):
+   ```bash
+   cd ../..
+   git add modules/genepay-payment-service
+   git commit -m "Update payment service to include new feature"
+   ```
+
+### Synchronizing Across Team
+
+When a teammate updates a submodule:
+
+```bash
+# Pull latest genepay-core changes
+git pull
+
+# Update all submodules to match the committed references
+git submodule update --init --recursive
+```
+
+## 🚨 Important Submodule Notes
+
+- Each submodule is a separate Git repository with its own history
+- Commits in submodules don't automatically commit to the parent repository
+- Always commit and push changes in the submodule first, then update the parent
+- The parent repository tracks specific commits (not branches) of submodules
+- Use `git submodule update` after pulling to sync submodule references
 
 ## 🔧 Troubleshooting
 
-### Script won't execute
-- **Windows**: Right-click the .bat file and select "Run as administrator"
-- **PowerShell**: Enable script execution with `Set-ExecutionPolicy`
-- **Linux/macOS**: Make the script executable with `chmod +x clone-repos.sh`
-
-### Git not found
-- Ensure Git is installed: [Download Git](https://git-scm.com/downloads)
-- Verify Git is in PATH by running: `git --version`
-
-### Permission denied
-- Ensure you have write permissions in the current directory
-- Try running the script from a directory where you have full permissions
-
-### Repository already exists
-- Delete or rename existing folders before re-running the script
-- Or manually pull updates in each existing repository with `git pull`
-
-## 🔄 Updating Repositories
-
-To update all repositories to their latest versions, navigate to each folder and run:
-
+### Submodules are empty after cloning
 ```bash
-git pull origin main
+git submodule update --init --recursive
 ```
 
-Or create an update script that loops through all folders.
+### Submodule shows modified but no changes made
+```bash
+# Reset submodule to the tracked commit
+git submodule update --force
+```
+
+### Detached HEAD in submodule
+```bash
+cd modules/genepay-payment-service
+git checkout main
+```
+
+### Remove a submodule
+```bash
+# Remove from .gitmodules and .git/config
+git submodule deinit -f modules/genepay-biometric-service
+git rm -f modules/genepay-biometric-service
+rm -rf .git/modules/modules/genepay-biometric-service
+```
 
 ## 📞 Support
 
-For issues with individual repositories, please visit the respective GitHub repository:
-- Organization: [GenePay-Full-Stack-Project](https://github.com/GenePay-Full-Stack-Project)
+For issues with individual repositories, please visit:
+- **Organization**: [GenePay-Full-Stack-Project](https://github.com/GenePay-Full-Stack-Project)
+- **Core Repository Issues**: [genepay-core/issues](https://github.com/GenePay-Full-Stack-Project/genepay-core/issues)
 
 ## 📄 License
 
-Each repository has its own license. Please refer to individual repository LICENSE files.
+Each submodule repository has its own license. Please refer to individual repository LICENSE files.
 
 ## 🤝 Contributing
 
 To contribute to the GenePay project:
-1. Fork the relevant repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request to the main repository
+
+1. **Fork the repository** you want to contribute to
+2. **Clone your fork** and create a feature branch
+3. **Make your changes** following the project's coding standards
+4. **Test thoroughly** before submitting
+5. **Submit a pull request** to the respective repository
+
+For multi-service changes:
+- Submit PRs to each affected submodule repository
+- Update the genepay-core submodule references after PRs are merged
 
 ---
 
+**Repository Type**: Monorepo with Git Submodules  
 **Last Updated**: January 2026  
-**Maintained by**: GenePay Development Team
+**Maintained by**: GenePay Development Team  
+**Architecture**: Microservices

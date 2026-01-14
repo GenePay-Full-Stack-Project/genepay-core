@@ -1,0 +1,21 @@
+[submodule "modules/genepay-biometric-service"]
+	path = modules/genepay-biometric-service
+	url = https://github.com/GenePay-Full-Stack-Project/genepay-biometric-service.git
+[submodule "modules/genepay-payment-service"]
+	path = modules/genepay-payment-service
+	url = https://github.com/GenePay-Full-Stack-Project/genepay-payment-service.git
+[submodule "modules/genepay-blockchain-service"]
+	path = modules/genepay-blockchain-service
+	url = https://github.com/GenePay-Full-Stack-Project/genepay-blockchain-service.git
+[submodule "web/genepay-admin-dashboard"]
+	path = web/genepay-admin-dashboard
+	url = https://github.com/GenePay-Full-Stack-Project/genepay-admin-dashboard.git
+[submodule "web/genepay-blockchain-dashboard"]
+	path = web/genepay-blockchain-dashboard
+	url = https://github.com/GenePay-Full-Stack-Project/genepay-blockchain-dashboard.git
+[submodule "mobile/genepay_merchant_app"]
+	path = mobile/genepay_merchant_app
+	url = https://github.com/GenePay-Full-Stack-Project/genepay-merchant-app.git
+[submodule "mobile/genepay_user_app"]
+	path = mobile/genepay_user_app
+	url = https://github.com/GenePay-Full-Stack-Project/genepay-user-app.git
