@@ -19,3 +19,6 @@
 [submodule "mobile/genepay_user_app"]
 	path = mobile/genepay_user_app
 	url = https://github.com/GenePay-Full-Stack-Project/genepay-user-app.git
+[submodule "infra/genepay-infra"]
+	path = infra/genepay-infra
+	url = https://github.com/GenePay-Full-Stack-Project/genepay-infra.git
