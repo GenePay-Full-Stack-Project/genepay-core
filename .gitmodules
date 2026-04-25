@@ -22,3 +22,6 @@
 [submodule "infra/genepay-infra"]
 	path = infra/genepay-infra
 	url = https://github.com/GenePay-Full-Stack-Project/genepay-infra.git
+[submodule "modules/genepay-banking-service"]
+	path = modules/genepay-banking-service
+	url = https://github.com/GenePay-Full-Stack-Project/genepay-banking-service
