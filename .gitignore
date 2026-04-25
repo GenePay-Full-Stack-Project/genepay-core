@@ -12,3 +12,6 @@ desktop.ini
 
 # Logs
 *.log
+
+# K8s secrets — never commit real secrets
+infra/genepay-infra/k8s/secret.yaml
